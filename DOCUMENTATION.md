@@ -1,7 +1,8 @@
 # X API Playground - Complete User Manual
 
-**Version:** 1.0  
-**Last Updated:** January 2025 (Current)
+**Version:** Latest  
+**Last Updated:** January 2025  
+**Repository:** https://github.com/xdevplatform/playground
 
 
 ## Table of Contents
@@ -46,6 +47,8 @@ The X URL Playground is a **local HTTP server** that provides a complete simulat
 - ✅ **No API Credits**: Test without consuming your X API quota
 - ✅ **Offline Development**: Work without internet connectivity
 - ✅ **CORS Support**: Works with web applications
+- ✅ **Interactive Web UI**: Data Explorer with relationships view, search operators, and pagination
+- ✅ **Relationship Management**: View and search user relationships (likes, follows, bookmarks, etc.)
 
 ### Use Cases
 
@@ -99,7 +102,7 @@ The X URL Playground is a **local HTTP server** that provides a complete simulat
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/playground.git
+git clone https://github.com/xdevplatform/playground.git
 cd playground
 
 # Build the binary
@@ -110,23 +113,37 @@ chmod +x playground
 
 # Test installation
 ./playground --help
+
+# Move to PATH (optional, for global access)
+sudo mv playground /usr/local/bin/
 ```
 
-#### Option 2: Install Globally
+#### Option 2: Install via go install (Recommended)
 
 ```bash
-# Install to $GOPATH/bin
-go install ./cmd/playground
+# Install latest version
+go install github.com/xdevplatform/playground/cmd/playground@latest
 
-# Or install to specific location
-go install -ldflags="-X main.version=1.0.0" ./cmd/playground
+# Or install a specific version
+go install github.com/xdevplatform/playground/cmd/playground@v1.0.0
+```
+
+This will install the `playground` binary to `$GOPATH/bin` (or `$HOME/go/bin` by default).
+
+Make sure `$GOPATH/bin` is in your `PATH`:
+```bash
+export PATH=$PATH:$(go env GOPATH)/bin
 ```
 
 #### Option 3: Download Pre-built Binary
 
 ```bash
-# Download from releases (if available)
-wget https://github.com/yourusername/playground/releases/latest/playground
+# Download from releases
+# Visit https://github.com/xdevplatform/playground/releases/latest
+# Download the binary for your platform
+
+# Or use wget/curl (example for Linux amd64)
+wget https://github.com/xdevplatform/playground/releases/latest/download/playground-linux-amd64 -O playground
 chmod +x playground
 sudo mv playground /usr/local/bin/
 ```
@@ -2442,7 +2459,9 @@ The X URL Playground provides a complete local simulation of the X API for testi
 **Refresh Spec**: `playground refresh`  
 **Base URL**: `http://localhost:8080`  
 **Config File**: `~/.playground/config.json`  
-**State File**: `~/.playground/state.json`
+**State File**: `~/.playground/state.json`  
+**Repository**: https://github.com/xdevplatform/playground  
+**Install Latest**: `go install github.com/xdevplatform/playground/cmd/playground@latest`
 
 ### Getting Help
 
@@ -2450,5 +2469,7 @@ The X URL Playground provides a complete local simulation of the X API for testi
 - Export state for debugging: `curl http://localhost:8080/state/export`
 - Check health: `curl http://localhost:8080/health`
 - View endpoints: `curl http://localhost:8080/endpoints`
+- Report issues: https://github.com/xdevplatform/playground/issues
+- View releases: https://github.com/xdevplatform/playground/releases
 
 Happy testing! 🚀
